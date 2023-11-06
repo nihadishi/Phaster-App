@@ -48,28 +48,28 @@ function LoginPage({navigation}) {
     ) {
       Toast.show({
         type: 'error',
-        text1: 'Xəta',
-        text2: 'Emailinizi doğru daxil edin',
+        text1: 'Error',
+        text2: 'Write your email correctly',
       });
     } 
     else if(!(userData.email== inputDatas.email) || userData.email == ""){
       Toast.show({
         type: 'error',
-        text1: 'Xəta',
-        text2: 'Ilk öncə qeydiyyatdan keçin',
+        text1: 'Error',
+        text2: 'Please register ',
       });
     } else if (inputDatas.password < 6 || !(userData.password==inputDatas.password)) {
       Toast.show({
         type: 'error',
-        text1: 'Xəta',
-        text2: 'Parol və ya email yalnışdır',
+        text1: 'Error',
+        text2: 'Password or email is wrong',
       });
     }
     else {
       Toast.show({
         type: 'success',
-        text1: 'Uğurla daxil oldunuz',
-        text2: 'Ana səhifəyə yönləndirilirsiz...',
+        text1: 'Account created successfully',
+        text2: 'You redirected to Home Screen',
       });
       setTimeout(() => {
         setIsLogin(true)
@@ -154,15 +154,15 @@ function LoginPage({navigation}) {
               <TouchableHighlight
                 onPress={handleLoginClick}
                 style={styles.loginButton}>
-                <Text style={styles.buttonText}>Daxil ol</Text>
+                <Text style={styles.buttonText}>Log in</Text>
               </TouchableHighlight>
               <Text
                 style={{color: '#014370'}}
                 onPress={() => {
                   navigation.navigate('Signup1Screen');
                 }}>
-                Hesabın yoxdur?{' '}
-                <Text style={{fontWeight: 700}}>Hesab Yarat</Text>
+                Don't have an account?{' '}
+                <Text style={{fontWeight: 700}}>Sign up</Text>
               </Text>
             </View>
             <View style={styles.needy}>

@@ -10,13 +10,13 @@ import Footer from '../../../layouts/Footer/Footer';
 import {styles} from './style';
 import PPSvg from './img/pp.svg';
 import ImagePicker from 'react-native-image-picker';
-import { useUserInfoContext } from '../../../assets/contexts/UserInfoContext';
+import {useUserInfoContext} from '../../../assets/contexts/UserInfoContext';
 const ProfilePage = ({navigation}) => {
   const screenHeight = Dimensions.get('window').height;
   const [profileImage, setProfileImage] = useState(null);
   const {userData, setUserData} = useUserInfoContext();
   const selectImage = () => {
-   const options = {
+    const options = {
       mediaType: 'photo',
       includeBase64: false,
       maxHeight: 2000,
@@ -45,12 +45,18 @@ const ProfilePage = ({navigation}) => {
               underlayColor="#F1F0EC"
               onPress={selectImage}
               style={styles.ppImg}>
-              {profileImage? <Image
-          source={profileImage}
-          style={{ width: 200, height: 200, borderRadius: 100 }}
-        />: <PPSvg/>}
+              {profileImage ? (
+                <Image
+                  source={profileImage}
+                  style={{width: 200, height: 200, borderRadius: 100}}
+                />
+              ) : (
+                <PPSvg />
+              )}
             </TouchableHighlight>
-            <Text style={styles.ppName}>{userData.name + " " + userData.surname}</Text>
+            <Text style={styles.ppName}>
+              {userData.name + ' ' + userData.surname}
+            </Text>
           </View>
           <View style={styles.items}>
             <View style={styles.item}>
@@ -62,21 +68,29 @@ const ProfilePage = ({navigation}) => {
               <Text style={styles.itemName}>{userData.surname}</Text>
             </View>
             <View style={styles.item}>
+              <Text style={styles.itemHeader}>Speciality</Text>
+              <Text style={styles.itemName}>{userData.speciality}</Text>
+            </View>
+            <View style={styles.item}>
               <Text style={styles.itemHeader}>Number</Text>
-              <Text style={styles.itemName}>{"+994"+userData.number}</Text>
+              <Text style={styles.itemName}>{'+994' + userData.number}</Text>
             </View>
             <View style={styles.item}>
               <Text style={styles.itemHeader}>E-mail</Text>
               <Text style={styles.itemName}>{userData.email}</Text>
             </View>
+
             <View style={styles.item}>
               <Text style={styles.itemHeader}>Gender</Text>
               <Text style={styles.itemName}>{userData.gender}</Text>
             </View>
             <View style={styles.item}>
               <Text style={styles.itemHeader}>Birth date</Text>
-              <Text style={styles.itemName}>{userData.birthDate?.toLocaleDateString()}</Text>
+              <Text style={styles.itemName}>
+                {userData.birthDate?.toLocaleDateString()}
+              </Text>
             </View>
+
             <View style={styles.item}>
               <Text style={styles.itemHeader}></Text>
               <Text style={styles.itemName}></Text>
