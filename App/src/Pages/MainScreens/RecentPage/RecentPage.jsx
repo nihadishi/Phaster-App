@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {Dimensions} from 'react-native';
 import Footer from '../../../layouts/Footer/Footer';
 import {styles} from './style';
@@ -13,7 +13,7 @@ import SearchIcon from './img/search.svg';
 import {Image} from 'react-native-animatable';
 const RecentPage = ({navigation}) => {
   const screenHeight = Dimensions.get('window').height;
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -24,7 +24,7 @@ const RecentPage = ({navigation}) => {
             style={styles.searchInput}
             placeholder="Axtar.."
             placeholderTextColor="#014370"
-            onChangeText={(text) => setSearchText(text)}
+            onChangeText={text => setSearchText(text)}
             value={searchText}
           />
           <TouchableHighlight onPress={() => {}} style={styles.searchIcon}>
@@ -33,108 +33,60 @@ const RecentPage = ({navigation}) => {
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.items}>
-          <View style={styles.item}>
-            <Text style={styles.itemText}></Text>
-            <View style={styles.itemContainer}>
-              <View style={styles.itemContainerTexts}>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-              </View>
-              <View style={{width: 103, height: 103}}>
-                <Image
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  resizeMode="contain"
-                  source={require('../../../assets/img/foryou/1.png')}
-                />
+            <View style={styles.item}>
+              <View style={styles.itemContainer}>
+                  <Image
+                    style={{flex: 1, width: 103, height: 103}}
+                    resizeMode="contain"
+                    source={require('../../../assets/img/foryou/1.png')}
+                  />
               </View>
             </View>
-          </View>
-          <View style={styles.item}>
-            <Text style={styles.itemText}></Text>
-            <View style={styles.itemContainer}>
-              <View style={styles.itemContainerTexts}>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-              </View>
-              <View style={{width: 103, height: 103}}>
-                <Image
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  resizeMode="contain"
-                  source={require('../../../assets/img/foryou/2.png')}
-                />
+            <View style={styles.item}>
+              <View style={styles.itemContainer}>
+                  <Image
+                    style={{flex: 1, width: 103, height: 103}}
+                    resizeMode="contain"
+                    source={require('../../../assets/img/foryou/2.png')}
+                  />
               </View>
             </View>
-          </View>
-          <View style={styles.item}>
-            <Text style={styles.itemText}></Text>
-            <View style={styles.itemContainer}>
-              <View style={styles.itemContainerTexts}>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-              </View>
-              <View style={{width: 103, height: 103}}>
-                <Image
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  resizeMode="contain"
-                  source={require('../../../assets/img/foryou/3.jpg')}
-                />
+            <View style={styles.item}>
+              <View style={styles.itemContainer}>
+                  <Image
+                    style={{flex: 1, width: 103, height: 103}}
+                    resizeMode="contain"
+                    source={require('../../../assets/img/foryou/3.jpg')}
+                  />
               </View>
             </View>
-          </View>
-          <View style={styles.item}>
-            <Text style={styles.itemText}></Text>
-            <View style={styles.itemContainer}>
-              <View style={styles.itemContainerTexts}>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-              </View>
-              <View style={{width: 103, height: 103}}>
-                <Image
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  resizeMode="contain"
-                  source={require('../../../assets/img/foryou/4.jpg')}
-                />
+            <View style={styles.item}>
+              <View style={styles.itemContainer}>
+                  <Image
+                    style={{flex: 1, width: 103, height: 103}}
+                    resizeMode="contain"
+                    source={require('../../../assets/img/foryou/4.jpg')}
+                  />
               </View>
             </View>
-          </View>
-          <View style={styles.item}>
-            <Text style={styles.itemText}></Text>
-            <View style={styles.itemContainer}>
-              <View style={styles.itemContainerTexts}>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-              </View>
-              <View style={{width: 103, height: 103}}>
+            <View style={styles.item}>
+              <View style={styles.itemContainer}>
                 <Image
-                  style={{flex: 1, width: undefined, height: undefined}}
+                  style={{flex: 1, width: 103, height: 103}}
                   resizeMode="contain"
                   source={require('../../../assets/img/foryou/5.jpg')}
                 />
               </View>
             </View>
-          </View>
-          <View style={styles.item}>
-            <Text style={styles.itemText}></Text>
-            <View style={styles.itemContainer}>
-              <View style={styles.itemContainerTexts}>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-                <Text style={styles.itemContainerText}></Text>
-              </View>
-              <View style={{width: 103, height: 103}}>
-                <Image
-                  style={{flex: 1, width: undefined, height: undefined}}
-                  resizeMode="contain"
-                  source={require('../../../assets/img/foryou/2.png')}
-                />
+            <View style={styles.item}>
+              <View style={styles.itemContainer}>
+                  <Image
+                    style={{flex: 1, width: 103, height: 103}}
+                    resizeMode="contain"
+                    source={require('../../../assets/img/foryou/2.png')}
+                  />
               </View>
             </View>
-          </View>
           </View>
         </ScrollView>
       </View>

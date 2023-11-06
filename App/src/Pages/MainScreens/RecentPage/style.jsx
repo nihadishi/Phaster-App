@@ -61,8 +61,6 @@ export const styles = StyleSheet.create({
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
-    paddingRight:29,
-    paddingLeft:9,
     paddingVertical:12
   },
   itemContainerTexts:{

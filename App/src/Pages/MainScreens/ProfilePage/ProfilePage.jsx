@@ -72,6 +72,10 @@ const ProfilePage = ({navigation}) => {
               <Text style={styles.itemName}>{userData.speciality}</Text>
             </View>
             <View style={styles.item}>
+              <Text style={styles.itemHeader}>Region</Text>
+              <Text style={styles.itemName}>🇦🇿 Azerbaijan</Text>
+            </View>
+            <View style={styles.item}>
               <Text style={styles.itemHeader}>Number</Text>
               <Text style={styles.itemName}>{'+994' + userData.number}</Text>
             </View>
