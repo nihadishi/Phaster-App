@@ -14,6 +14,7 @@ export const UserInfoContextProvider = ({children}) => {
     birthDate: new Date(),
     // birthDate: '',
     gender: '',
+    speciality: '',
     agreement: true,
   });
   useEffect(() => {

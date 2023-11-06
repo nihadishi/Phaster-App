@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F1F0EC',
     marginTop: 29,
     width: '100%',
-    minHeight: 450,
+    minHeight: 550,
     height: '100%',
     flexDirection: 'column',
   },
@@ -107,6 +107,22 @@ export const styles = StyleSheet.create({
     fontSize:20,
     color:"#014370",
     fontFamily:"Nunito-SemiBold"
+  },
+  speciality:{
+    width:"100%",
+    flexDirection:"row",
+    justifyContent:"space-between"
+  },
+  specialityText:{
+    fontSize:24,
+    color:"#014370",
+    height:"100%",
+    textAlignVertical:"center",
+    fontFamily:"Nunito-Bold"
+  },
+  specialityItem:{
+    width:"100%",
+    color:"#014370"
   },
   agreement:{
     justifyContent:"flex-end",

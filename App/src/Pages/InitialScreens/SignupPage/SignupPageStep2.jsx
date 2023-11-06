@@ -8,12 +8,15 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import React, {useState} from 'react';
+import SelectDropdown from 'react-native-select-dropdown';
 import Toast from 'react-native-toast-message';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import CalendarSvg from "./img/calendar.svg";
-import GoBackSvg from "./img/goBack.svg";
+import CalendarSvg from './img/calendar.svg';
+import GoBackSvg from './img/goBack.svg';
+import DownSvg from './img/down.svg';
 import {styles} from './style2';
-import { useUserInfoContext } from '../../../assets/contexts/UserInfoContext';
+import {useUserInfoContext} from '../../../assets/contexts/UserInfoContext';
+import { Image } from 'react-native-animatable';
 const SignupPageStep2 = ({navigation}) => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const {userData, setUserData} = useUserInfoContext();
@@ -28,6 +31,7 @@ const SignupPageStep2 = ({navigation}) => {
     }
     setShowDatePicker(false);
   };
+  const countries = ["Frontend", "Backend", "Fullstack", "Mobile", "UI/UX", "QA", "Electonica", "Data Science" ]
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -38,17 +42,15 @@ const SignupPageStep2 = ({navigation}) => {
           onPress={() => {
             navigation.goBack();
           }}>
-          <GoBackSvg width={20} height={20}/>
+          <GoBackSvg width={20} height={20} />
         </TouchableOpacity>
         <View style={styles.container}>
-          <Text style={styles.createAccount}>Yeni Hesab Yarat</Text>
+          <Text style={styles.createAccount}>Create a new account</Text>
           <View style={styles.client}>
-            <Text style={styles.clientText}>Müştəri</Text>
+            <Text style={styles.clientText}>Client</Text>
           </View>
           <View style={styles.inputArea}>
-            <Text style={styles.writeDateBirth}>
-              Doğum tarixinizi qeyd edin
-            </Text>
+            <Text style={styles.writeDateBirth}>Select your birth date</Text>
             <TouchableHighlight
               underlayColor="transparent"
               onPress={() => {
@@ -58,7 +60,7 @@ const SignupPageStep2 = ({navigation}) => {
                 <TextInput
                   style={{color: '#014370'}}
                   placeholderTextColor="rgba(1,67,112,0.7)"
-                  placeholder="Doğum tarihi"
+                  placeholder="Birth date"
                   value={
                     userData.birthDate
                       ? userData?.birthDate?.toLocaleDateString()
@@ -67,7 +69,7 @@ const SignupPageStep2 = ({navigation}) => {
                   editable={false}
                 />
 
-                <CalendarSvg width={23} height={23}/>
+                <CalendarSvg width={23} height={23} />
               </View>
             </TouchableHighlight>
             {showDatePicker && (
@@ -85,62 +87,84 @@ const SignupPageStep2 = ({navigation}) => {
                 onPress={() => {
                   setUserData(prevData => ({
                     ...prevData,
-                    gender: 'Kişi',
+                    gender: 'Man',
                   }));
                 }}
                 underlayColor=""
                 style={
-                  userData.gender === 'Kişi'
+                  userData.gender === 'Man'
                     ? styles.genderTypeSelected
                     : styles.genderTypeNotSelected
                 }>
                 <Text
                   style={
-                    userData.gender === 'Kişi'
+                    userData.gender === 'Man'
                       ? styles.genderTypeSelectedText
                       : styles.genderTypeNotSelectedText
                   }>
-                  Kişi
+                  Man
                 </Text>
               </TouchableHighlight>
               <TouchableHighlight
                 onPress={() => {
                   setUserData(prevData => ({
                     ...prevData,
-                    gender: 'Qadın',
+                    gender: 'Woman',
                   }));
                 }}
                 underlayColor=""
                 style={
-                  userData.gender === 'Qadın'
+                  userData.gender === 'Woman'
                     ? styles.genderTypeSelected
                     : styles.genderTypeNotSelected
                 }>
                 <Text
                   style={
-                    userData.gender === 'Qadın'
+                    userData.gender === 'Woman'
                       ? styles.genderTypeSelectedText
                       : styles.genderTypeNotSelectedText
                   }>
-                  Qadın
+                  Woman
                 </Text>
               </TouchableHighlight>
             </View>
-          <View style={styles.agreement}>
+              <View style={styles.speciality}>
+                <Text style={styles.specialityText}>Speciality</Text>
+                <SelectDropdown
+                buttonStyle={{backgroundColor:"#014370", borderRadius:10}}
+                buttonTextStyle={{color:"#fff"}}
+                dropdownStyle={{backgroundColor:"#fff", color:"#014370"}}
+                  data={countries}
+                  defaultButtonText='Choose'
+                  onSelect={(selectedItem, index) => {
+                    setUserData(prevData =>({
+                      ...prevData,
+                      speciality: selectedItem
+                    }))
+                  }}
+                  buttonTextAfterSelection={(selectedItem, index) => {
+                   
+                    return selectedItem;
+                  }}
+                  rowTextForSelection={(item, index) => {
+                    
+                    return item;
+                  }}
+                />
+              </View>
+            <View style={styles.agreement}>
               <CheckBox
-              tintColors={{true: "#014370",false:"#014370"}}
-              value={userData.agreement}
-              onValueChange={() => {
-                setUserData(prevData => ({
-                  ...prevData,
-                  agreement: !prevData.agreement,
-                }));
-              }}
-            />
-            <Text style={styles.agreementText}>
-            Qaydalar və şərtlər
-            </Text>
-          </View>
+                tintColors={{true: '#014370', false: '#014370'}}
+                value={userData.agreement}
+                onValueChange={() => {
+                  setUserData(prevData => ({
+                    ...prevData,
+                    agreement: !prevData.agreement,
+                  }));
+                }}
+              />
+              <Text style={styles.agreementText}>Agreement</Text>
+            </View>
           </View>
           <TouchableHighlight
             style={styles.nextButton}
@@ -149,7 +173,7 @@ const SignupPageStep2 = ({navigation}) => {
               if (
                 userData.birthDate === '' ||
                 userData.gender.trim() === '' ||
-                userData.agreement === false 
+                userData.agreement === false
               ) {
                 Toast.show({
                   type: 'error',
@@ -177,7 +201,7 @@ const SignupPageStep2 = ({navigation}) => {
                 navigation.navigate('LoginScreen');
               }, 2000);
             }}>
-            <Text style={styles.buttonText}>Hesab Yarat</Text>
+            <Text style={styles.buttonText}>Create</Text>
           </TouchableHighlight>
         </View>
       </View>

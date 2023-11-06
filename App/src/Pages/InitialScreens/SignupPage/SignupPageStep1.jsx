@@ -41,17 +41,17 @@ const SignupPageStep1 = ({navigation}) => {
           </TouchableOpacity>
           <View style={styles.container}>
             <StyledText style={styles.createAccount}>
-              Yeni Hesab Yarat
+              Create a new account
             </StyledText>
             <View style={styles.client}>
-              <Text style={styles.clientText}>Müştəri</Text>
+              <Text style={styles.clientText}>Client</Text>
             </View>
             <View style={styles.inputArea}>
               <View style={styles.input}>
                 <TextInput
                   style={{color: '#014370', width: '100%'}}
                   placeholderTextColor="rgba(1,67,112,0.7)"
-                  placeholder="Ad"
+                  placeholder="Name"
                   onChangeText={text => {
                     setUserData(prevData => ({
                       ...prevData,
@@ -65,7 +65,7 @@ const SignupPageStep1 = ({navigation}) => {
                 <TextInput
                   style={{color: '#014370', width: '100%'}}
                   placeholderTextColor="rgba(1,67,112,0.7)"
-                  placeholder="Soyad"
+                  placeholder="Surname"
                   onChangeText={text => {
                     setUserData(prevData => ({
                       ...prevData,
@@ -79,7 +79,7 @@ const SignupPageStep1 = ({navigation}) => {
                 <TextInput
                   style={{color: '#014370', width: '100%'}}
                   placeholderTextColor="rgba(1,67,112,0.7)"
-                  placeholder="E-poçt ünvanı"
+                  placeholder="E-mail"
                   onChangeText={text => {
                     setUserData(prevData => ({
                       ...prevData,
@@ -98,7 +98,7 @@ const SignupPageStep1 = ({navigation}) => {
                 <View style={styles.inputNumberInput}>
                   <TextInput
                     style={{color: '#014370', width: '100%'}}
-                    placeholder="Mobil nömrə"
+                    placeholder="Number"
                     keyboardType="numeric"
                     placeholderTextColor="rgba(1,67,112,0.7)"
                     value={userData.number}
@@ -123,7 +123,7 @@ const SignupPageStep1 = ({navigation}) => {
                   style={{color: '#014370', width: '75%'}}
                   secureTextEntry={showPassword1}
                   placeholderTextColor="rgba(1,67,112,0.7)"
-                  placeholder="Şifrə"
+                  placeholder="Password"
                   onChangeText={text => {
                     setUserData(prevData => ({
                       ...prevData,
@@ -150,7 +150,7 @@ const SignupPageStep1 = ({navigation}) => {
                   style={{color: '#014370', width: '75%'}}
                   secureTextEntry={showPassword2}
                   placeholderTextColor="rgba(1,67,112,0.7)"
-                  placeholder="Şifrəni təkrarlayın"
+                  placeholder="Repeat passowrd"
                   onChangeText={text => {
                     setUserData(prevData => ({
                       ...prevData,
@@ -188,21 +188,21 @@ const SignupPageStep1 = ({navigation}) => {
                   Toast.show({
                     type: 'error',
                     text1: 'Xəta',
-                    text2: 'Xahiş edirik bütün xanaları doldurasız',
+                    text2: 'Please fill in all lines',
                   });
                   return;
                 } else if (userData.number.length < 9) {
                   Toast.show({
                     type: 'error',
                     text1: 'Xəta',
-                    text2: 'Əlaqə nömrənizi doğru daxil edin',
+                    text2: 'Please enter number correctly',
                   });
                   return;
                 } else if (userData.password.length < 6) {
                   Toast.show({
                     type: 'error',
                     text1: 'Xəta',
-                    text2: 'Şifrə minimum 6 simvoldan ibarət olmalıdır',
+                    text2: 'Password must have minimum 6 characters',
                   });
                   return;
                 } else if (
@@ -211,26 +211,26 @@ const SignupPageStep1 = ({navigation}) => {
                   Toast.show({
                     type: 'error',
                     text1: 'Xəta',
-                    text2: 'Şifrənin təkrarı ilə şifrə eyni deyil',
+                    text2: "Password doesn't match your repeat password",
                   });
                   return;
                 }
 
                 navigation.navigate('Signup2Screen');
               }}>
-              <Text style={styles.buttonText}>Növbəti</Text>
+              <Text style={styles.buttonText}>Next</Text>
             </TouchableHighlight>
             <View style={styles.haveAnAccount}>
               <View style={styles.goToLogin}>
                 <Text style={{color: '#014370', fontSize: 16}}>
-                  Artıq hesabın var?
+                  Already have an account?
                 </Text>
                 <Text
                   style={{color: '#014370', fontWeight: '700', fontSize: 18}}
                   onPress={() => {
                     navigation.navigate('LoginScreen');
                   }}>
-                  Daxil ol
+                  Log in
                 </Text>
               </View>
             </View>
